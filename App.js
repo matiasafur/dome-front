@@ -1,20 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { Layout } from "./src/components/navigation/_layout";
+import { ApolloProvider } from "@apollo/client";
+import { initializeClient } from "./src/graphql/Client";
+import { AuthProvider } from "./src/context/AuthContext";
+
+const client = initializeClient();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ApolloProvider client={client}>
+      <AuthProvider>
+        <SafeAreaProvider style={{ flex: 1 }}>
+          <StatusBar style="auto" />
+          <Layout />
+        </SafeAreaProvider>
+      </AuthProvider>
+    </ApolloProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
