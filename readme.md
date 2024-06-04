@@ -1,6 +1,6 @@
 # Dome - IoT Device Management App (Front-end)
 
-![Dome Logo](https://github.com/matiasafur/dome-front/blob/master/assets/DOME-logo.png)
+<img src="https://github.com/matiasafur/dome-front/blob/master/assets/DOME-logo.png" alt="Dome Logo" width="200" />
 
 ## Overview
 
@@ -18,7 +18,8 @@
 ## Screenshots
 
 ### Main Screen
-![Main Screen](https://github.com/matiasafur/dome-front/blob/master/assets/home-screen.jpeg)
+
+<img src="https://github.com/matiasafur/dome-front/blob/master/assets/home-screen.jpeg" alt="Main Screen" width="300" />
 
 ## Technology Stack
 
