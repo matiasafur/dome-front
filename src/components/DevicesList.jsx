@@ -7,14 +7,14 @@ import { ThemedText } from "./ThemedText";
 
 
 export default function DevicesList({ devices }) {
-    const { colors } = useTheme();
+    let { colors } = useTheme();
     const navigation = useNavigation();
 
     const renderItem = useCallback(({ item: device }) => {
         return (
             <TouchableOpacity
                 onPress={() => {
-                    navigation.navigate('device', { device });
+                    navigation.navigate('device-stats', { device });
                 }}
             >
                 <ThemedView style={[styles.item, { backgroundColor: colors.card }]}>
@@ -41,6 +41,7 @@ export default function DevicesList({ devices }) {
                     <FlatList
                         style={[styles.list, {
                             backgroundColor: colors.card,
+                            borderColor: colors.border
                         }]}
                         data={devices}
                         keyExtractor={device => device.id}

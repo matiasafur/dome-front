@@ -1,13 +1,13 @@
 export const LightTheme = {
     dark: false,
     colors: {
-        primary: '#3F3FBC',
-        secondary: '#FF4545',
-        accent: '#223982',
+        primary: '#3C19EC',
+        secondary: '#C118D8',
+        accent: '#006DFF',
         background: '#F2EDF0',
         card: '#D5CDE8',
         text: '#2B2B2B',
-        border: '#2B2B2B',
+        border: '#B9ABD7',
         notification: '#FF6347',
     },
 };

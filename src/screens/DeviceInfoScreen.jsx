@@ -6,18 +6,10 @@ import { Ionicons } from "@expo/vector-icons";
 import { useNavigation, useTheme } from "@react-navigation/native";
 import { useEffect } from "react";
 
-export default function DeviceScreen({ route }) {
+export default function DeviceInfoScreen({ route }) {
     const { device } = route.params;
     const { colors } = useTheme();
     const navigation = useNavigation();
-
-    if (!device) {
-        return (
-            <ThemedView style={styles.container}>
-                <ThemedText type="notification">Device not found.</ThemedText>
-            </ThemedView>
-        );
-    }
 
     useEffect(() => {
         navigation.setOptions({
@@ -35,11 +27,16 @@ export default function DeviceScreen({ route }) {
             <ThemedView style={{ backgroundColor: colors.border, height: 1 }} />
         );
     }
+
+    const capitalize = (string) => (
+        string.charAt(0).toUpperCase() + string.slice(1)
+    );
+
     return (
         <ThemedView style={styles.container}>
             <ThemedScrollView>
                 <ThemedView style={styles.content}>
-                    <ThemedView style={{ justifyContent: 'center', alignItems: 'center' }}>
+                    <ThemedView style={{ justifyContent: 'center', alignItems: 'center', gap: 10 }}>
                         <ThemedView style={[styles.icon, { backgroundColor: colors.card }]}>
                             <Ionicons
                                 name={device.icon || "hardware-chip-outline"}
@@ -47,10 +44,11 @@ export default function DeviceScreen({ route }) {
                                 size={50}
                             />
                         </ThemedView>
+                            <ThemedText type="defaultBold">{device.name}</ThemedText>
                     </ThemedView>
                     <ThemedView style={styles.header}>
                         <ThemedText type="defaultBold">Type</ThemedText>
-                        <ThemedText type="default">{device.type}</ThemedText>
+                        <ThemedText type="default">{capitalize(device.type)}</ThemedText>
                     </ThemedView>
                     <Separator />
                     <ThemedView style={styles.header}>
@@ -65,7 +63,7 @@ export default function DeviceScreen({ route }) {
                             <Ionicons name="globe-outline" color={colors.primary} size={30} />
                             <ThemedText type="defaultBold">Location</ThemedText>
                         </ThemedView>
-                        <ThemedText type="default">{device.location || "No location defined"}</ThemedText>
+                        <ThemedText type="default">{device.location || "Undefined"}</ThemedText>
                     </ThemedView>
                     <Separator />
                     <ThemedView style={styles.header}>
@@ -73,7 +71,7 @@ export default function DeviceScreen({ route }) {
                             <Ionicons name="pulse-outline" color={colors.primary} size={30} />
                             <ThemedText type="defaultBold">Status</ThemedText>
                         </ThemedView>
-                        <ThemedText type="default">{device.status}</ThemedText>
+                        <ThemedText type="default">{capitalize(device.status)}</ThemedText>
                     </ThemedView>
                     <Separator />
                     <ThemedView style={styles.header}>
@@ -81,7 +79,7 @@ export default function DeviceScreen({ route }) {
                             <Ionicons name="radio-outline" color={colors.primary} size={30} />
                             <ThemedText type="defaultBold">Connection</ThemedText>
                         </ThemedView>
-                        <ThemedText type="default">{device.connection}</ThemedText>
+                        <ThemedText type="default">{capitalize(device.connection)}</ThemedText>
                     </ThemedView>
                     <Separator />
                     <ThemedView style={styles.header}>

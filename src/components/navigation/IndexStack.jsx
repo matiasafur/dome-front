@@ -3,7 +3,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "../../screens/HomeScreen";
 import { ThemedText } from "../ThemedText";
 import HeaderBackground from "../HeaderBackground";
-import DeviceScreen from "../../screens/DeviceScreen";
+import DeviceInfoScreen from "../../screens/DeviceInfoScreen";
+import DeviceStatsScreen from "../../screens/DeviceStatsScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -18,7 +19,7 @@ export default function IndexStack() {
                 headerShown: true,
                 headerShadowVisible: false,
                 headerTintColor: colors.text,
-                headerBackground: () => <HeaderBackground />
+                headerBackground: () => <HeaderBackground />,
             }}>
             <Stack.Screen
                 name="home"
@@ -35,11 +36,19 @@ export default function IndexStack() {
                     ),
                 }}
             />
-            <Stack.Screen name="device"
-                component={DeviceScreen}
+            <Stack.Screen name="device-stats"
+                component={DeviceStatsScreen}
                 options={({ route }) => ({
                     title: route.params.device.name
                 })}
+                initialParams={{ device: null }}
+            />
+            <Stack.Screen name="device-info"
+                component={DeviceInfoScreen}
+                options={{
+                    title: "Information",
+                    headerBackTitleVisible: false,
+                }}
                 initialParams={{ device: null }}
             />
         </Stack.Navigator>
